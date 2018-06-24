@@ -5,10 +5,12 @@ use Slim\Http\Response;
 
 $app->group('/countries', function () use ($app) {
 
-    $app->get('/search', function (Request $request, Response $response, array $args) {
+    $app->post('/search', function (Request $request, Response $response, array $args) {
         $this->logger->info("Slim-Skeleton '/countries/search' route");
-        $data = array('name' => 'Bob', 'age' => 40);
-        $newResponse = $response->withJson($data);
+        $countriesService = new CountriesService();
+        $countryList = $countriesService->getCountryList();
+
+        $newResponse = $response->withJson($countryList);
         return $newResponse;
     });
 
