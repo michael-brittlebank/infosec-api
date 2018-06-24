@@ -25,3 +25,7 @@ Run this command in the application directory to run the test suite
 	php composer.phar test
 
 That's it! Now go build something cool.
+
+## Run the Application
+
+    php -S localhost:8080 -t public public/index.php
